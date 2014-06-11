@@ -9,6 +9,7 @@
   <packaging>pom</packaging>
   <name>Cyberpunk MMO</name>
   <modules>
+      <module>server</module>
   </modules>
   <inceptionYear>2014</inceptionYear>
   <developers>
