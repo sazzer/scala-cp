@@ -11,4 +11,44 @@
   <artifactId>cpmmo-server-app</artifactId>
   <packaging>jar</packaging>
   <name>Cyberpunk MMO - Server Application</name>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>cpmmo-app-base</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+                <goal>single</goal>
+            </goals>
+            <configuration>
+                <descriptors>
+                    <descriptor>${basedir}/src/main/assembly/app.xml</descriptor>
+                </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <configuration>
+            <executable>java</executable>
+            <arguments>
+                <argument>-cp</argument>
+                <classpath />
+                <argument>uk.co.grahamcox.cpmmo.Application</argument>
+            </arguments>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
